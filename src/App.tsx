@@ -36,6 +36,29 @@ function AppContent() {
     return 'search';
   });
   const [savedCount, setSavedCount] = useState<number>(0);
+  const contentRef = React.useRef<HTMLDivElement>(null);
+
+  // Smoothly scroll down to the active content section so information is instantly visible
+  const scrollToContent = (smooth = true) => {
+    if (typeof window === 'undefined') return;
+
+    // Small timeout ensures the new tab component has mounted and dimensions are computed
+    setTimeout(() => {
+      const target = contentRef.current || document.getElementById('content-section');
+      if (target) {
+        const header = document.querySelector('header');
+        const headerHeight = header ? header.getBoundingClientRect().height : 68;
+        const elementPosition = target.getBoundingClientRect().top + window.scrollY;
+        // Leave comfortable 16px breathing room below the sticky header
+        const offsetPosition = Math.max(0, elementPosition - headerHeight - 14);
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: smooth ? 'smooth' : 'auto',
+        });
+      }
+    }, 60);
+  };
 
   // Read saved milestones on mount and listen to popstate for browser navigation
   useEffect(() => {
@@ -51,23 +74,40 @@ function AppContent() {
       // ignore
     }
 
+    // Auto scroll down to information if opened with a tab query parameter
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('tab')) {
+        scrollToContent(false);
+      }
+    }
+
     const handlePopState = () => {
       const params = new URLSearchParams(window.location.search);
       const tabParam = params.get('tab');
       setActiveTab(tabParam || 'search');
+      if (tabParam) {
+        scrollToContent(true);
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     };
 
     window.addEventListener('popstate', handlePopState);
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
-  const handleTabChange = (tab: string) => {
+  const handleTabChange = (tab: string, options?: { toTop?: boolean }) => {
     setActiveTab(tab);
     if (typeof window !== 'undefined') {
       const newUrl = tab === 'search' ? window.location.pathname : `?tab=${encodeURIComponent(tab)}`;
       window.history.pushState({ tab }, '', newUrl);
     }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (options?.toTop) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      scrollToContent(true);
+    }
   };
 
   return (
@@ -80,17 +120,22 @@ function AppContent() {
         {/* Strict 3-zone Top Bar Contract Header */}
         <Navbar
           activeTab={activeTab}
-          setActiveTab={handleTabChange}
+          setActiveTab={(tab) => handleTabChange(tab)}
+          onLogoClick={() => handleTabChange('search', { toTop: true })}
           savedCount={savedCount}
         />
 
         {/* Main Content Arena */}
         <main className="flex-1 w-full max-w-full overflow-x-hidden">
           {/* Editorial Hero Section with theme-awareness & 4-stage journey */}
-          <HeroSection onSelectTab={handleTabChange} />
+          <HeroSection onSelectTab={(tab) => handleTabChange(tab)} />
 
           {/* Tabbed Guides & Interactive Suites */}
-          <div className="pb-16 relative w-full max-w-full overflow-x-hidden">
+          <div
+            id="content-section"
+            ref={contentRef}
+            className="pb-16 relative w-full max-w-full overflow-x-hidden scroll-mt-24"
+          >
             {activeTab === 'gmail' && <GmailAdmissionsHub />}
             {activeTab === 'ai-advisor' && <GeminiChatbot />}
             {activeTab === 'live-voice' && <GeminiLiveVoice />}

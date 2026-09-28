@@ -152,12 +152,12 @@ export const Footer: React.FC<FooterProps> = ({ onSelectTab }) => {
 
         <div className="border-t border-[var(--theme-hero-border)] pt-6 flex flex-col sm:flex-row items-center justify-between text-stone-500 gap-4">
           <div className="text-stone-400">
-            © {new Date().getFullYear()} <span className="text-stone-200 font-semibold">GlobalPath</span> · Created & Architected by <span className="text-amber-400 font-semibold">Pranav Subhash Jagtap</span>
+            © {new Date().getFullYear()} <span className="text-stone-200 font-semibold">GlobalPath</span> · Created & Architected by <span className="text-amber-400 font-semibold">Pranav Suchita Subhash Jagtap</span>
           </div>
           <div className="flex items-center gap-4 text-stone-400">
             <span>Free Global Admissions Guide</span>
             <span>·</span>
-            <span>Built by Pranav Subhash Jagtap</span>
+            <span>Built by Pranav Suchita Subhash Jagtap</span>
           </div>
         </div>
       </div>

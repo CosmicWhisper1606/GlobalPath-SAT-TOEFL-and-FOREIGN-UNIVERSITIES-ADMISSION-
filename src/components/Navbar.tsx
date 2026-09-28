@@ -8,9 +8,10 @@ interface NavbarProps {
   activeTab: string;
   setActiveTab: (tab: string) => void;
   savedCount: number;
+  onLogoClick?: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, savedCount }) => {
+export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, savedCount, onLogoClick }) => {
   const { user, savedColleges } = useAuth();
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
 
@@ -41,7 +42,13 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, savedCo
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
           {/* Zone 1: Wordmark */}
           <button
-            onClick={() => setActiveTab('search')}
+            onClick={() => {
+              if (onLogoClick) {
+                onLogoClick();
+              } else {
+                setActiveTab('search');
+              }
+            }}
             className="text-lg font-bold tracking-tight text-amber-100 hover:text-white transition-colors flex items-center gap-2 shrink-0 cursor-pointer"
           >
             <GraduationCap className="w-5 h-5 text-[var(--theme-accent)]" />

@@ -6,8 +6,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 
-// Default target URL or environment override
-const baseUrl = (process.env.APP_URL || 'https://globalpath-sat-toefl-foreign-university-admission.ai.studio').replace(/\/$/, '');
+// Primary production domain for Google Search Console and SEO
+const baseUrl = (process.env.CUSTOM_SITEMAP_URL || 'https://globalpath-sat-toefl-foreign-university-admission.ai.studio').replace(/\/$/, '');
 const currentDate = new Date().toISOString().split('T')[0];
 
 interface SitemapRoute {

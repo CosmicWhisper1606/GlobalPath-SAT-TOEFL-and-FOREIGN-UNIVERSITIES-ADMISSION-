@@ -571,8 +571,14 @@ app.get('/robots.txt', (req: Request, res: Response) => {
 
 app.get('/sitemap.xml', (req: Request, res: Response) => {
   const host = req.get('host') || 'localhost';
-  const protocol = req.protocol || 'https';
-  const baseUrl = process.env.APP_URL ? process.env.APP_URL.replace(/\/$/, '') : `${protocol}://${host}`;
+  const rawProto = req.get('x-forwarded-proto') || (host.includes('localhost') ? 'http' : 'https');
+  const forwardedProto = rawProto.split(',')[0].trim() || 'https';
+  
+  // Dynamically resolve base URL matching the requesting domain (Search Console requires sitemap URLs to match the domain)
+  let baseUrl = `${forwardedProto}://${host}`.replace(/\/$/, '');
+  if (baseUrl.includes('localhost') || baseUrl.includes('127.0.0.1')) {
+    baseUrl = 'https://globalpath-sat-toefl-foreign-university-admission.ai.studio';
+  }
   const currentDate = new Date().toISOString().split('T')[0];
 
   const sections = [

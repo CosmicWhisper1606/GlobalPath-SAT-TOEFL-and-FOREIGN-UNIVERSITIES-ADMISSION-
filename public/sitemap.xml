@@ -5,154 +5,154 @@
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <!-- Homepage & University Search -->
   <url>
-    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/</loc>
+    <loc>https://globalpath-sat-toefl-foreign-university-admission.ai.studio/</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <!-- University Matcher & Admissions Catalog -->
   <url>
-    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/?tab=search</loc>
+    <loc>https://globalpath-sat-toefl-foreign-university-admission.ai.studio/?tab=search</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.95</priority>
   </url>
   <!-- Gmail Admissions Inbox & Official Inquiries -->
   <url>
-    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/?tab=gmail</loc>
+    <loc>https://globalpath-sat-toefl-foreign-university-admission.ai.studio/?tab=gmail</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.95</priority>
   </url>
   <!-- Gemini Multi-Turn Admissions Advisor (Pro/Flash) -->
   <url>
-    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/?tab=ai-advisor</loc>
+    <loc>https://globalpath-sat-toefl-foreign-university-admission.ai.studio/?tab=ai-advisor</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.95</priority>
   </url>
   <!-- Gemini 3.8 Live Voice Counselor -->
   <url>
-    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/?tab=live-voice</loc>
+    <loc>https://globalpath-sat-toefl-foreign-university-admission.ai.studio/?tab=live-voice</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
   <!-- Google Search Grounded Admissions Intelligence -->
   <url>
-    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/?tab=grounded-search</loc>
+    <loc>https://globalpath-sat-toefl-foreign-university-admission.ai.studio/?tab=grounded-search</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.90</priority>
   </url>
   <!-- Digital SAT Comprehensive Preparation Guide -->
   <url>
-    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/?tab=sat</loc>
+    <loc>https://globalpath-sat-toefl-foreign-university-admission.ai.studio/?tab=sat</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
   <!-- Official TOEFL iBT Prep & Speaking Rubrics -->
   <url>
-    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/?tab=toefl</loc>
+    <loc>https://globalpath-sat-toefl-foreign-university-admission.ai.studio/?tab=toefl</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
   <!-- Standardized Testing Comparison Hub & Center Status -->
   <url>
-    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/?tab=testing-hub</loc>
+    <loc>https://globalpath-sat-toefl-foreign-university-admission.ai.studio/?tab=testing-hub</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
   <!-- SAT & TOEFL Upcoming Registration Dates & Deadlines -->
   <url>
-    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/?tab=upcoming-dates</loc>
+    <loc>https://globalpath-sat-toefl-foreign-university-admission.ai.studio/?tab=upcoming-dates</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.90</priority>
   </url>
   <!-- Global Scholarships & Need-Blind Financial Aid Finder -->
   <url>
-    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/?tab=scholarships</loc>
+    <loc>https://globalpath-sat-toefl-foreign-university-admission.ai.studio/?tab=scholarships</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
   <!-- Curriculum Engine (CBSE, IB, A-Levels, AP Normalization) -->
   <url>
-    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/?tab=curriculum</loc>
+    <loc>https://globalpath-sat-toefl-foreign-university-admission.ai.studio/?tab=curriculum</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <!-- Global Exam Equalizer & Grading Obstacle Normalizer -->
   <url>
-    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/?tab=equalizer</loc>
+    <loc>https://globalpath-sat-toefl-foreign-university-admission.ai.studio/?tab=equalizer</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <!-- Country-by-Country Study Abroad Guides -->
   <url>
-    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/?tab=countries</loc>
+    <loc>https://globalpath-sat-toefl-foreign-university-admission.ai.studio/?tab=countries</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <!-- Visas, Embassy Checklists & Proof of Funds -->
   <url>
-    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/?tab=global-students</loc>
+    <loc>https://globalpath-sat-toefl-foreign-university-admission.ai.studio/?tab=global-students</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <!-- AI Mock Exam Testing Hub -->
   <url>
-    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/?tab=mock-tests</loc>
+    <loc>https://globalpath-sat-toefl-foreign-university-admission.ai.studio/?tab=mock-tests</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <!-- Score Converter & International GPA Calculator -->
   <url>
-    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/?tab=calculator</loc>
+    <loc>https://globalpath-sat-toefl-foreign-university-admission.ai.studio/?tab=calculator</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <!-- Holistic Admissions Strategy Blueprint -->
   <url>
-    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/?tab=blueprint</loc>
+    <loc>https://globalpath-sat-toefl-foreign-university-admission.ai.studio/?tab=blueprint</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <!-- Application Form Walkthrough Video Tutorials -->
   <url>
-    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/?tab=video-guides</loc>
+    <loc>https://globalpath-sat-toefl-foreign-university-admission.ai.studio/?tab=video-guides</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
   </url>
   <!-- Application Milestone Timeline Tracker -->
   <url>
-    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/?tab=tracker</loc>
+    <loc>https://globalpath-sat-toefl-foreign-university-admission.ai.studio/?tab=tracker</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <!-- Official Admissions Handbooks & PDF Resources -->
   <url>
-    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/?tab=resources</loc>
+    <loc>https://globalpath-sat-toefl-foreign-university-admission.ai.studio/?tab=resources</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <!-- Testing Policies & University Comparison Matrix -->
   <url>
-    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/?tab=compare</loc>
+    <loc>https://globalpath-sat-toefl-foreign-university-admission.ai.studio/?tab=compare</loc>
     <lastmod>2026-09-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>

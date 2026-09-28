@@ -1,0 +1,8 @@
+{
+  "name": "Remix GlobalPath: SAT, TOEFL \u0026 Foreign University Admissions Guide",
+  "description": "Comprehensive authority guide and interactive toolkit for Digital SAT, TOEFL iBT, foreign university admissions, scholarships, visa roadmaps, and application timelines.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

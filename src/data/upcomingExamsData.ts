@@ -1,0 +1,761 @@
+export interface UpcomingExamDate {
+  id: string;
+  exam: 'SAT' | 'TOEFL' | 'IELTS';
+  academicYear: '2025-2026' | '2026-2027' | '2027-2028';
+  date: string; // ISO date YYYY-MM-DD
+  displayDate: string;
+  dayOfWeek: string;
+  regularDeadline: string;
+  lateDeadline: string;
+  scoreReleaseDate: string;
+  targetIntake: string;
+  season: 'Fall' | 'Spring' | 'Summer' | 'Winter';
+  status: 'Open' | 'Upcoming' | 'Priority Deadline';
+  notes: string;
+}
+
+export interface ExamPolicyUpdate {
+  title: string;
+  category: 'Testing App' | 'Format' | 'Admissions Policy' | 'ID & Verification';
+  effectiveDate: string;
+  summary: string;
+  actionRequired: string;
+  impactLevel: 'High' | 'Medium' | 'Info';
+}
+
+export const ALL_UPCOMING_SAT_DATES: UpcomingExamDate[] = [
+  // --- 2026-2027 Academic Cycle ---
+  {
+    id: 'sat-2026-10-03',
+    exam: 'SAT',
+    academicYear: '2026-2027',
+    date: '2026-10-03',
+    displayDate: 'October 3, 2026',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'September 18, 2026',
+    lateDeadline: 'September 22, 2026',
+    scoreReleaseDate: 'October 16, 2026',
+    targetIntake: 'Fall 2027 Early Decision / Early Action (Critical)',
+    season: 'Fall',
+    status: 'Priority Deadline',
+    notes: 'Last viable exam date for November 1 Early Decision 1 (ED1) and Early Action (EA) college deadlines.'
+  },
+  {
+    id: 'sat-2026-11-07',
+    exam: 'SAT',
+    academicYear: '2026-2027',
+    date: '2026-11-07',
+    displayDate: 'November 7, 2026',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'October 23, 2026',
+    lateDeadline: 'October 27, 2026',
+    scoreReleaseDate: 'November 20, 2026',
+    targetIntake: 'Fall 2027 Regular Decision & UK UCAS',
+    season: 'Fall',
+    status: 'Open',
+    notes: 'Scores arrive in time for UK UCAS general deadline submission and Canadian early rounds.'
+  },
+  {
+    id: 'sat-2026-12-05',
+    exam: 'SAT',
+    academicYear: '2026-2027',
+    date: '2026-12-05',
+    displayDate: 'December 5, 2026',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'November 20, 2026',
+    lateDeadline: 'November 24, 2026',
+    scoreReleaseDate: 'December 18, 2026',
+    targetIntake: 'Fall 2027 Regular Decision (Final Safe Sitting)',
+    season: 'Winter',
+    status: 'Priority Deadline',
+    notes: 'Final date guaranteed to deliver official score reports before January 1–15 Regular Decision deadlines across US Ivy League.'
+  },
+  {
+    id: 'sat-2027-03-13',
+    exam: 'SAT',
+    academicYear: '2026-2027',
+    date: '2027-03-13',
+    displayDate: 'March 13, 2027',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'February 26, 2027',
+    lateDeadline: 'March 2, 2027',
+    scoreReleaseDate: 'March 26, 2027',
+    targetIntake: 'Fall 2028 Juniors (Diagnostic / Baseline) & Spring 2028 Admissions',
+    season: 'Spring',
+    status: 'Open',
+    notes: 'Premier baseline exam for high school Grade 11 / Year 12 students targeting Fall 2028 elite admissions.'
+  },
+  {
+    id: 'sat-2027-05-08',
+    exam: 'SAT',
+    academicYear: '2026-2027',
+    date: '2027-05-08',
+    displayDate: 'May 8, 2027',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'April 23, 2027',
+    lateDeadline: 'April 27, 2027',
+    scoreReleaseDate: 'May 21, 2027',
+    targetIntake: 'Fall 2028 Admissions Prep',
+    season: 'Spring',
+    status: 'Open',
+    notes: 'Take alongside or after AP exams. Perfect opportunity to improve score before summer essay drafting.'
+  },
+  {
+    id: 'sat-2027-06-05',
+    exam: 'SAT',
+    academicYear: '2026-2027',
+    date: '2027-06-05',
+    displayDate: 'June 5, 2027',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'May 21, 2027',
+    lateDeadline: 'May 25, 2027',
+    scoreReleaseDate: 'June 18, 2027',
+    targetIntake: 'Fall 2028 Summer Preparation',
+    season: 'Summer',
+    status: 'Open',
+    notes: 'Final exam before summer break; allows students to finalize test requirements before Common App opens August 1.'
+  },
+  {
+    id: 'sat-2027-08-28',
+    exam: 'SAT',
+    academicYear: '2026-2027',
+    date: '2027-08-28',
+    displayDate: 'August 28, 2027',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'July 30, 2027',
+    lateDeadline: 'August 13, 2027',
+    scoreReleaseDate: 'September 10, 2027',
+    targetIntake: 'Fall 2028 Early Admissions Kickoff (Prime Slot)',
+    season: 'Summer',
+    status: 'Priority Deadline',
+    notes: 'High-demand international administration. International test centers book out 2–3 months ahead.'
+  },
+
+  // --- 2027-2028 Academic Cycle ---
+  {
+    id: 'sat-2027-10-02',
+    exam: 'SAT',
+    academicYear: '2027-2028',
+    date: '2027-10-02',
+    displayDate: 'October 2, 2027',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'September 17, 2027',
+    lateDeadline: 'September 21, 2027',
+    scoreReleaseDate: 'October 15, 2027',
+    targetIntake: 'Fall 2028 Early Decision / Early Action (Critical)',
+    season: 'Fall',
+    status: 'Priority Deadline',
+    notes: 'Last viable test date for US universities with November 1 Early Decision (ED1) and Early Action (EA) deadlines.'
+  },
+  {
+    id: 'sat-2027-11-06',
+    exam: 'SAT',
+    academicYear: '2027-2028',
+    date: '2027-11-06',
+    displayDate: 'November 6, 2027',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'October 22, 2027',
+    lateDeadline: 'October 26, 2027',
+    scoreReleaseDate: 'November 19, 2027',
+    targetIntake: 'Fall 2028 Regular Decision & UK UCAS',
+    season: 'Fall',
+    status: 'Open',
+    notes: 'Ideal for UCAS application score submission and Regular Decision (RD) early preparation.'
+  },
+  {
+    id: 'sat-2027-12-04',
+    exam: 'SAT',
+    academicYear: '2027-2028',
+    date: '2027-12-04',
+    displayDate: 'December 4, 2027',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'November 19, 2027',
+    lateDeadline: 'November 23, 2027',
+    scoreReleaseDate: 'December 17, 2027',
+    targetIntake: 'Fall 2028 Regular Decision (Final Safe Attempt)',
+    season: 'Winter',
+    status: 'Priority Deadline',
+    notes: 'Final date guaranteed to produce scores before January 1–15 Regular Decision deadlines across US Ivy League and top-50 universities.'
+  },
+  {
+    id: 'sat-2028-03-11',
+    exam: 'SAT',
+    academicYear: '2027-2028',
+    date: '2028-03-11',
+    displayDate: 'March 11, 2028',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'February 25, 2028',
+    lateDeadline: 'February 29, 2028',
+    scoreReleaseDate: 'March 24, 2028',
+    targetIntake: 'Fall 2029 Juniors (Diagnostic / Baseline) & Spring 2029 Admissions',
+    season: 'Spring',
+    status: 'Open',
+    notes: 'Baseline exam for Class of 2029 high school juniors planning early applications next year.'
+  },
+  {
+    id: 'sat-2028-05-06',
+    exam: 'SAT',
+    academicYear: '2027-2028',
+    date: '2028-05-06',
+    displayDate: 'May 6, 2028',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'April 21, 2028',
+    lateDeadline: 'April 25, 2028',
+    scoreReleaseDate: 'May 19, 2028',
+    targetIntake: 'Fall 2029 Admissions Prep',
+    season: 'Spring',
+    status: 'Open',
+    notes: 'Scheduled alongside AP exam fortnight; solid spring target for Grade 11.'
+  },
+  {
+    id: 'sat-2028-06-03',
+    exam: 'SAT',
+    academicYear: '2027-2028',
+    date: '2028-06-03',
+    displayDate: 'June 3, 2028',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'May 19, 2028',
+    lateDeadline: 'May 23, 2028',
+    scoreReleaseDate: 'June 16, 2028',
+    targetIntake: 'Fall 2029 Summer Planning',
+    season: 'Summer',
+    status: 'Open',
+    notes: 'Scores finalize before the summer admissions drafting cycle begins.'
+  },
+  {
+    id: 'sat-2028-08-26',
+    exam: 'SAT',
+    academicYear: '2027-2028',
+    date: '2028-08-26',
+    displayDate: 'August 26, 2028',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'July 28, 2028',
+    lateDeadline: 'August 11, 2028',
+    scoreReleaseDate: 'September 8, 2028',
+    targetIntake: 'Fall 2029 Early Admissions Kickoff',
+    season: 'Summer',
+    status: 'Priority Deadline',
+    notes: 'Premier late-summer test date for seniors aiming for Early Action deadlines.'
+  }
+];
+
+export const ALL_UPCOMING_TOEFL_DATES: UpcomingExamDate[] = [
+  // --- 2026-2027 Academic Cycle ---
+  {
+    id: 'toefl-2026-10-10',
+    exam: 'TOEFL',
+    academicYear: '2026-2027',
+    date: '2026-10-10',
+    displayDate: 'October 10, 2026',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'October 3, 2026',
+    lateDeadline: 'October 6, 2026',
+    scoreReleaseDate: 'October 16, 2026',
+    targetIntake: 'Fall 2027 Early Action & Oxford / Cambridge UCAS',
+    season: 'Fall',
+    status: 'Priority Deadline',
+    notes: 'Critical sitting for October 15 UCAS early deadlines and November 1 US Early Decision.'
+  },
+  {
+    id: 'toefl-2026-11-14',
+    exam: 'TOEFL',
+    academicYear: '2026-2027',
+    date: '2026-11-14',
+    displayDate: 'November 14, 2026',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'November 7, 2026',
+    lateDeadline: 'November 10, 2026',
+    scoreReleaseDate: 'November 20, 2026',
+    targetIntake: 'Fall 2027 Canadian & European Deadlines',
+    season: 'Fall',
+    status: 'Open',
+    notes: 'Ensures scores reach admissions committees before holiday campus closures.'
+  },
+  {
+    id: 'toefl-2026-12-12',
+    exam: 'TOEFL',
+    academicYear: '2026-2027',
+    date: '2026-12-12',
+    displayDate: 'December 12, 2026',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'December 5, 2026',
+    lateDeadline: 'December 8, 2026',
+    scoreReleaseDate: 'December 19, 2026',
+    targetIntake: 'Fall 2027 Regular Decision Deadlines',
+    season: 'Winter',
+    status: 'Priority Deadline',
+    notes: 'Last safe test date for US college deadlines starting January 1st.'
+  },
+  {
+    id: 'toefl-2027-01-16',
+    exam: 'TOEFL',
+    academicYear: '2026-2027',
+    date: '2027-01-16',
+    displayDate: 'January 16, 2027',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'January 9, 2027',
+    lateDeadline: 'January 12, 2027',
+    scoreReleaseDate: 'January 22, 2027',
+    targetIntake: 'Late Regular Decision & European Spring',
+    season: 'Winter',
+    status: 'Open',
+    notes: 'Meets February 1 application cutoffs for Michigan, Wisconsin, and German universities.'
+  },
+  {
+    id: 'toefl-2027-03-20',
+    exam: 'TOEFL',
+    academicYear: '2026-2027',
+    date: '2027-03-20',
+    displayDate: 'March 20, 2027',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'March 13, 2027',
+    lateDeadline: 'March 16, 2027',
+    scoreReleaseDate: 'March 26, 2027',
+    targetIntake: 'Graduate Fall 2027 & Undergraduate Fall 2028 Early',
+    season: 'Spring',
+    status: 'Open',
+    notes: 'Ideal for graduate applicants and early undergraduate planners.'
+  },
+  {
+    id: 'toefl-2027-05-15',
+    exam: 'TOEFL',
+    academicYear: '2026-2027',
+    date: '2027-05-15',
+    displayDate: 'May 15, 2027',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'May 8, 2027',
+    lateDeadline: 'May 11, 2027',
+    scoreReleaseDate: 'May 21, 2027',
+    targetIntake: 'Visa Processing for Fall 2027 Enrollment',
+    season: 'Spring',
+    status: 'Priority Deadline',
+    notes: 'Crucial deadline for conditional offer holders needing to meet English visa conditions.'
+  },
+  {
+    id: 'toefl-2027-07-17',
+    exam: 'TOEFL',
+    academicYear: '2026-2027',
+    date: '2027-07-17',
+    displayDate: 'July 17, 2027',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'July 10, 2027',
+    lateDeadline: 'July 13, 2027',
+    scoreReleaseDate: 'July 23, 2027',
+    targetIntake: 'Fall 2028 Admissions Prep',
+    season: 'Summer',
+    status: 'Open',
+    notes: 'Summer sitting allows thorough preparation without high school course pressure.'
+  },
+  {
+    id: 'toefl-2027-09-11',
+    exam: 'TOEFL',
+    academicYear: '2026-2027',
+    date: '2027-09-11',
+    displayDate: 'September 11, 2027',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'September 4, 2027',
+    lateDeadline: 'September 7, 2027',
+    scoreReleaseDate: 'September 17, 2027',
+    targetIntake: 'Fall 2028 Early Cycle Kickoff',
+    season: 'Fall',
+    status: 'Open',
+    notes: 'Kickoff test date for senior year applications.'
+  },
+
+  // --- 2027-2028 Academic Cycle ---
+  {
+    id: 'toefl-2027-10-09',
+    exam: 'TOEFL',
+    academicYear: '2027-2028',
+    date: '2027-10-09',
+    displayDate: 'October 9, 2027',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'October 2, 2027',
+    lateDeadline: 'October 5, 2027',
+    scoreReleaseDate: 'October 15, 2027',
+    targetIntake: 'Fall 2028 Early Action / Oxbridge UCAS',
+    season: 'Fall',
+    status: 'Priority Deadline',
+    notes: 'Meets October 15 Oxbridge deadline and November 1 US Early Decision cutoffs.'
+  },
+  {
+    id: 'toefl-2027-11-13',
+    exam: 'TOEFL',
+    academicYear: '2027-2028',
+    date: '2027-11-13',
+    displayDate: 'November 13, 2027',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'November 6, 2027',
+    lateDeadline: 'November 9, 2027',
+    scoreReleaseDate: 'November 19, 2027',
+    targetIntake: 'Fall 2028 Canadian & UK Regular Decision',
+    season: 'Fall',
+    status: 'Open',
+    notes: 'Arrives before holiday deadlines across North American and European universities.'
+  },
+  {
+    id: 'toefl-2027-12-11',
+    exam: 'TOEFL',
+    academicYear: '2027-2028',
+    date: '2027-12-11',
+    displayDate: 'December 11, 2027',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'December 4, 2027',
+    lateDeadline: 'December 7, 2027',
+    scoreReleaseDate: 'December 18, 2027',
+    targetIntake: 'Fall 2028 Regular Decision Deadlines',
+    season: 'Winter',
+    status: 'Priority Deadline',
+    notes: 'Final safe test sitting before January 1–15 university application portals close.'
+  },
+  {
+    id: 'toefl-2028-01-15',
+    exam: 'TOEFL',
+    academicYear: '2027-2028',
+    date: '2028-01-15',
+    displayDate: 'January 15, 2028',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'January 8, 2028',
+    lateDeadline: 'January 11, 2028',
+    scoreReleaseDate: 'January 21, 2028',
+    targetIntake: 'Late Regular Decision & European Spring',
+    season: 'Winter',
+    status: 'Open',
+    notes: 'Meets late February 1 Canadian and German university application deadlines.'
+  },
+  {
+    id: 'toefl-2028-03-18',
+    exam: 'TOEFL',
+    academicYear: '2027-2028',
+    date: '2028-03-18',
+    displayDate: 'March 18, 2028',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'March 11, 2028',
+    lateDeadline: 'March 14, 2028',
+    scoreReleaseDate: 'March 24, 2028',
+    targetIntake: 'Fall 2029 Juniors & Visa Expediting',
+    season: 'Spring',
+    status: 'Open',
+    notes: 'Ideal spring session for graduate applicants and juniors.'
+  },
+  {
+    id: 'toefl-2028-05-13',
+    exam: 'TOEFL',
+    academicYear: '2027-2028',
+    date: '2028-05-13',
+    displayDate: 'May 13, 2028',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'May 6, 2028',
+    lateDeadline: 'May 9, 2028',
+    scoreReleaseDate: 'May 19, 2028',
+    targetIntake: 'Visa Processing for Fall 2028 Enrollment',
+    season: 'Spring',
+    status: 'Priority Deadline',
+    notes: 'Required for CAS and I-20 English condition clearance ahead of summer visa filing.'
+  },
+  {
+    id: 'toefl-2028-07-15',
+    exam: 'TOEFL',
+    academicYear: '2027-2028',
+    date: '2028-07-15',
+    displayDate: 'July 15, 2028',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'July 8, 2028',
+    lateDeadline: 'July 11, 2028',
+    scoreReleaseDate: 'July 21, 2028',
+    targetIntake: 'Fall 2029 Summer Prep',
+    season: 'Summer',
+    status: 'Open',
+    notes: 'Summer sitting allows thorough preparation without academic clash.'
+  }
+];
+
+export const ALL_UPCOMING_IELTS_DATES: UpcomingExamDate[] = [
+  // --- 2026-2027 Academic Cycle ---
+  {
+    id: 'ielts-2026-10-17',
+    exam: 'IELTS',
+    academicYear: '2026-2027',
+    date: '2026-10-17',
+    displayDate: 'October 17, 2026',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'October 3, 2026',
+    lateDeadline: 'October 10, 2026',
+    scoreReleaseDate: 'October 21–23, 2026',
+    targetIntake: 'Fall 2027 Early Decision / Oxford & Cambridge UCAS',
+    season: 'Fall',
+    status: 'Priority Deadline',
+    notes: 'Primary date for UK October 15/early admissions and US early decision filings. Computer-based results out in 1–5 days.'
+  },
+  {
+    id: 'ielts-2026-11-21',
+    exam: 'IELTS',
+    academicYear: '2026-2027',
+    date: '2026-11-21',
+    displayDate: 'November 21, 2026',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'November 7, 2026',
+    lateDeadline: 'November 14, 2026',
+    scoreReleaseDate: 'November 25–27, 2026',
+    targetIntake: 'Fall 2027 Canadian & European Deadlines',
+    season: 'Fall',
+    status: 'Open',
+    notes: 'Delivers TRF (Test Report Form) before December closures across Canadian and European universities.'
+  },
+  {
+    id: 'ielts-2026-12-12',
+    exam: 'IELTS',
+    academicYear: '2026-2027',
+    date: '2026-12-12',
+    displayDate: 'December 12, 2026',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'November 28, 2026',
+    lateDeadline: 'December 5, 2026',
+    scoreReleaseDate: 'December 16–18, 2026',
+    targetIntake: 'Fall 2027 Regular Decision Deadlines (Final Safe Sitting)',
+    season: 'Winter',
+    status: 'Priority Deadline',
+    notes: 'Last safe sitting date for January 1–15 Regular Decision university application deadlines worldwide.'
+  },
+  {
+    id: 'ielts-2027-01-23',
+    exam: 'IELTS',
+    academicYear: '2026-2027',
+    date: '2027-01-23',
+    displayDate: 'January 23, 2027',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'January 9, 2027',
+    lateDeadline: 'January 16, 2027',
+    scoreReleaseDate: 'January 27–29, 2027',
+    targetIntake: 'Late Regular Decision & European Spring Intakes',
+    season: 'Winter',
+    status: 'Open',
+    notes: 'Meets February 1 cutoffs for Scandinavian, German, and Canadian undergraduate/graduate applications.'
+  },
+  {
+    id: 'ielts-2027-03-27',
+    exam: 'IELTS',
+    academicYear: '2026-2027',
+    date: '2027-03-27',
+    displayDate: 'March 27, 2027',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'March 13, 2027',
+    lateDeadline: 'March 20, 2027',
+    scoreReleaseDate: 'March 31 – April 2, 2027',
+    targetIntake: 'Fall 2027 Graduate Round 3 & Fall 2028 Early Planning',
+    season: 'Spring',
+    status: 'Open',
+    notes: 'Ideal for prospective graduate scholars and early undergraduate planners.'
+  },
+  {
+    id: 'ielts-2027-05-22',
+    exam: 'IELTS',
+    academicYear: '2026-2027',
+    date: '2027-05-22',
+    displayDate: 'May 22, 2027',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'May 8, 2027',
+    lateDeadline: 'May 15, 2027',
+    scoreReleaseDate: 'May 26–28, 2027',
+    targetIntake: 'Visa Condition Clearance for Fall 2027 Enrollment',
+    season: 'Spring',
+    status: 'Priority Deadline',
+    notes: 'Critical test date for conditional offer holders needing to satisfy UK CAS / Australian CoE / Canadian PAL language conditions.'
+  },
+  {
+    id: 'ielts-2027-07-24',
+    exam: 'IELTS',
+    academicYear: '2026-2027',
+    date: '2027-07-24',
+    displayDate: 'July 24, 2027',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'July 10, 2027',
+    lateDeadline: 'July 17, 2027',
+    scoreReleaseDate: 'July 28–30, 2027',
+    targetIntake: 'Fall 2028 Summer Preparation',
+    season: 'Summer',
+    status: 'Open',
+    notes: 'Summer break sitting allows students to achieve band 7.5+ before academic term begins.'
+  },
+  {
+    id: 'ielts-2027-09-18',
+    exam: 'IELTS',
+    academicYear: '2026-2027',
+    date: '2027-09-18',
+    displayDate: 'September 18, 2027',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'September 4, 2027',
+    lateDeadline: 'September 11, 2027',
+    scoreReleaseDate: 'September 22–24, 2027',
+    targetIntake: 'Fall 2028 Early Admissions Kickoff',
+    season: 'Fall',
+    status: 'Open',
+    notes: 'Kickoff exam sitting for rising seniors applying in early rounds.'
+  },
+
+  // --- 2027-2028 Academic Cycle ---
+  {
+    id: 'ielts-2027-10-16',
+    exam: 'IELTS',
+    academicYear: '2027-2028',
+    date: '2027-10-16',
+    displayDate: 'October 16, 2027',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'October 2, 2027',
+    lateDeadline: 'October 9, 2027',
+    scoreReleaseDate: 'October 20–22, 2027',
+    targetIntake: 'Fall 2028 Early Action & Oxbridge UCAS',
+    season: 'Fall',
+    status: 'Priority Deadline',
+    notes: 'Essential sitting for UK October 15 deadlines and US November 1 Early Decision rounds.'
+  },
+  {
+    id: 'ielts-2027-11-20',
+    exam: 'IELTS',
+    academicYear: '2027-2028',
+    date: '2027-11-20',
+    displayDate: 'November 20, 2027',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'November 6, 2027',
+    lateDeadline: 'November 13, 2027',
+    scoreReleaseDate: 'November 24–26, 2027',
+    targetIntake: 'Fall 2028 Canadian & European Universities',
+    season: 'Fall',
+    status: 'Open',
+    notes: 'Arrives ahead of university winter closures for Canadian and European priority rounds.'
+  },
+  {
+    id: 'ielts-2027-12-11',
+    exam: 'IELTS',
+    academicYear: '2027-2028',
+    date: '2027-12-11',
+    displayDate: 'December 11, 2027',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'November 27, 2027',
+    lateDeadline: 'December 4, 2027',
+    scoreReleaseDate: 'December 15–17, 2027',
+    targetIntake: 'Fall 2028 Regular Decision Deadlines (Final Safe Sitting)',
+    season: 'Winter',
+    status: 'Priority Deadline',
+    notes: 'Final safe test sitting before January 1–15 application deadlines worldwide.'
+  },
+  {
+    id: 'ielts-2028-01-22',
+    exam: 'IELTS',
+    academicYear: '2027-2028',
+    date: '2028-01-22',
+    displayDate: 'January 22, 2028',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'January 8, 2028',
+    lateDeadline: 'January 15, 2028',
+    scoreReleaseDate: 'January 26–28, 2028',
+    targetIntake: 'Late Regular Decision & European Spring Intakes',
+    season: 'Winter',
+    status: 'Open',
+    notes: 'Meets late February 1 Canadian and Scandinavian university application deadlines.'
+  },
+  {
+    id: 'ielts-2028-03-25',
+    exam: 'IELTS',
+    academicYear: '2027-2028',
+    date: '2028-03-25',
+    displayDate: 'March 25, 2028',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'March 11, 2028',
+    lateDeadline: 'March 18, 2028',
+    scoreReleaseDate: 'March 29–31, 2028',
+    targetIntake: 'Fall 2029 Diagnostic & Graduate Admissions',
+    season: 'Spring',
+    status: 'Open',
+    notes: 'Spring benchmark session for Class of 2029 juniors and graduate applicants.'
+  },
+  {
+    id: 'ielts-2028-05-20',
+    exam: 'IELTS',
+    academicYear: '2027-2028',
+    date: '2028-05-20',
+    displayDate: 'May 20, 2028',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'May 6, 2028',
+    lateDeadline: 'May 13, 2028',
+    scoreReleaseDate: 'May 24–26, 2028',
+    targetIntake: 'Visa Condition Clearance for Fall 2028 Enrollment',
+    season: 'Spring',
+    status: 'Priority Deadline',
+    notes: 'Crucial sitting for clearing unconditional visa offer letters before summer visa rush.'
+  },
+  {
+    id: 'ielts-2028-07-22',
+    exam: 'IELTS',
+    academicYear: '2027-2028',
+    date: '2028-07-22',
+    displayDate: 'July 22, 2028',
+    dayOfWeek: 'Saturday',
+    regularDeadline: 'July 8, 2028',
+    lateDeadline: 'July 15, 2028',
+    scoreReleaseDate: 'July 26–28, 2028',
+    targetIntake: 'Fall 2029 Summer Prep',
+    season: 'Summer',
+    status: 'Open',
+    notes: 'Summer testing window free from regular high school exam commitments.'
+  }
+];
+
+export const FUTURE_EXAM_POLICY_UPDATES: ExamPolicyUpdate[] = [
+  {
+    title: 'SAT Mandate Reversions for 2026–2027 & 2027–2028',
+    category: 'Admissions Policy',
+    effectiveDate: 'Enforced for 2026–2027 & 2027–2028 Cycles',
+    summary: 'A decisive wave of elite US universities have reinstated standardized test requirements. Institutions now strictly requiring SAT or ACT scores include MIT, Dartmouth, Yale, UT Austin, Georgetown, Purdue, Georgia Tech, and Caltech. Other institutions (Harvard, Stanford) place strong holistic emphasis on submitted scores.',
+    actionRequired: 'Target a minimum 1500+ (750+ Math for STEM) to remain competitive at reinstated test-mandatory institutions.',
+    impactLevel: 'High'
+  },
+  {
+    title: 'IELTS One Skill Retake (OSR) Acceptance Protocols',
+    category: 'Format',
+    effectiveDate: 'Active Across 2026–2028 Cycles',
+    summary: 'IELTS One Skill Retake permits candidates to retake any one component (Listening, Reading, Writing, or Speaking) within 60 days of the full test. While accepted widely by Australian and UK visa authorities and many universities, verify whether your target institutions accept OSR or require full sittings in one sitting.',
+    actionRequired: 'Check each prospective university admissions portal: US Ivy League colleges generally demand all four subscores from a single sitting.',
+    impactLevel: 'High'
+  },
+  {
+    title: 'Bluebook App OS Requirements (2026–2028)',
+    category: 'Testing App',
+    effectiveDate: 'Active Through 2028',
+    summary: 'The College Board enforces Bluebook v3.2+ compatibility. Supported devices include Windows 10/11 (64-bit), macOS 12+ (Monterey, Ventura, Sonoma, Sequoia), iPads running iPadOS 16+, and school-managed Chromebooks. Personal Chromebooks and Android tablets are strictly prohibited.',
+    actionRequired: 'Update your device OS at least 2 weeks before test day. Complete mandatory exam check-in within Bluebook 1–5 days prior to print your admission ticket.',
+    impactLevel: 'High'
+  },
+  {
+    title: 'Desmos Built-In Regression Standards',
+    category: 'Format',
+    effectiveDate: 'Standard Across All Digital SAT Tests',
+    summary: 'Calculators are allowed on 100% of Math questions. The built-in Desmos graphing calculator supports linear regressions (~mx1+b), quadratic models (~ax1^2+bx1+c), system intersections, and trigonometric analysis without external hardware.',
+    actionRequired: 'Practice typing regression syntax directly into the Desmos simulator to solve 8–10 questions in under 15 seconds each.',
+    impactLevel: 'High'
+  },
+  {
+    title: 'Strict International Passport Mandate',
+    category: 'ID & Verification',
+    effectiveDate: 'Enforced Worldwide at All Test Centers',
+    summary: 'For international testing outside your citizenship nation or in centers across India, UAE, Singapore, Turkey, and Europe, only a physical, original government passport is accepted. Photocopies, notarized letters, student IDs, and national identity cards are rejected with zero refund.',
+    actionRequired: 'Verify that your passport does not expire within 6 months of your planned test date.',
+    impactLevel: 'High'
+  },
+  {
+    title: 'TOEFL iBT 1h 56m Streamlined Format & 4-Day Score Reports',
+    category: 'Format',
+    effectiveDate: 'Permanently Standardized',
+    summary: 'ETS has permanently standardized the 1-hour 56-minute exam structure with zero unscored experimental sections. Unofficial Reading and Listening scores appear on-screen immediately upon completion. Official certified score reports are posted online within 4 to 8 calendar days.',
+    actionRequired: 'Master the 10-minute Academic Discussion writing task with 120–150 concise words to maximize section scores.',
+    impactLevel: 'Medium'
+  },
+  {
+    title: '24-Month Score Validity & Matriculation Rule',
+    category: 'Admissions Policy',
+    effectiveDate: 'Continuous Standard',
+    summary: 'Both SAT (for admissions verification) and TOEFL iBT scores remain valid for exactly 2 years (24 months) from the testing date. For Fall 2027 enrollment (August 2027), exams taken after August 2025 are valid. For Fall 2028 enrollment, exams taken after August 2026 are valid.',
+    actionRequired: 'Align your test date so scores remain active through your formal campus matriculation date.',
+    impactLevel: 'Info'
+  }
+];

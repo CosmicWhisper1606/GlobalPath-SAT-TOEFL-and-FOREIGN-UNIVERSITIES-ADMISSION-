@@ -16,6 +16,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeTab, setActiveTab, savedCo
 
   const navItems = [
     { id: 'search', label: 'University Matcher' },
+    { id: 'gmail', label: '📧 Gmail & Inquiries', highlight: true },
     { id: 'ai-advisor', label: '✨ Gemini AI Advisor', highlight: true },
     { id: 'live-voice', label: '🎙️ Live Voice (3.8 Live)', live: true },
     { id: 'grounded-search', label: '🌐 Search Intel', search: true },

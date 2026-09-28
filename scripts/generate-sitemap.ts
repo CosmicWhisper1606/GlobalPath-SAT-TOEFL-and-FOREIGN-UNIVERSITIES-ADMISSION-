@@ -20,6 +20,7 @@ interface SitemapRoute {
 const routes: SitemapRoute[] = [
   { path: '', changefreq: 'daily', priority: '1.0', description: 'Homepage & University Search' },
   { path: '?tab=search', changefreq: 'daily', priority: '0.95', description: 'University Matcher & Admissions Catalog' },
+  { path: '?tab=gmail', changefreq: 'daily', priority: '0.95', description: 'Gmail Admissions Inbox & Official Inquiries' },
   { path: '?tab=ai-advisor', changefreq: 'daily', priority: '0.95', description: 'Gemini Multi-Turn Admissions Advisor (Pro/Flash)' },
   { path: '?tab=live-voice', changefreq: 'weekly', priority: '0.90', description: 'Gemini 3.8 Live Voice Counselor' },
   { path: '?tab=grounded-search', changefreq: 'daily', priority: '0.90', description: 'Google Search Grounded Admissions Intelligence' },

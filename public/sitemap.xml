@@ -17,6 +17,13 @@
     <changefreq>daily</changefreq>
     <priority>0.95</priority>
   </url>
+  <!-- Gmail Admissions Inbox & Official Inquiries -->
+  <url>
+    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/?tab=gmail</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
   <!-- Gemini Multi-Turn Admissions Advisor (Pro/Flash) -->
   <url>
     <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/?tab=ai-advisor</loc>

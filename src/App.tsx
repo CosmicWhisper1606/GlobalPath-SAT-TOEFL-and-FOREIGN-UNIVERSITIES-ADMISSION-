@@ -21,6 +21,7 @@ import { CurriculumEngine } from './components/CurriculumEngine';
 import { GeminiChatbot } from './components/GeminiChatbot';
 import { GeminiLiveVoice } from './components/GeminiLiveVoice';
 import { SearchGroundingIntelligence } from './components/SearchGroundingIntelligence';
+import { GmailAdmissionsHub } from './components/GmailAdmissionsHub';
 import { Footer } from './components/Footer';
 import { ThemeProvider } from './utils/ThemeContext';
 import { AuthProvider } from './context/AuthContext';
@@ -90,6 +91,7 @@ function AppContent() {
 
           {/* Tabbed Guides & Interactive Suites */}
           <div className="pb-16 relative w-full max-w-full overflow-x-hidden">
+            {activeTab === 'gmail' && <GmailAdmissionsHub />}
             {activeTab === 'ai-advisor' && <GeminiChatbot />}
             {activeTab === 'live-voice' && <GeminiLiveVoice />}
             {activeTab === 'grounded-search' && <SearchGroundingIntelligence />}

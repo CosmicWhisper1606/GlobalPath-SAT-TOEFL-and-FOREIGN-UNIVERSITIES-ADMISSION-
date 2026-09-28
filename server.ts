@@ -578,6 +578,7 @@ app.get('/sitemap.xml', (req: Request, res: Response) => {
   const sections = [
     { path: '', changefreq: 'daily', priority: '1.0' },
     { path: '?tab=search', changefreq: 'daily', priority: '0.95' },
+    { path: '?tab=gmail', changefreq: 'daily', priority: '0.95' },
     { path: '?tab=ai-advisor', changefreq: 'daily', priority: '0.95' },
     { path: '?tab=live-voice', changefreq: 'weekly', priority: '0.90' },
     { path: '?tab=grounded-search', changefreq: 'daily', priority: '0.90' },

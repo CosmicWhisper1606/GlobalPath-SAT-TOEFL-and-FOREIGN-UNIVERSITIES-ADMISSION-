@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { User, onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth';
+import { User, onAuthStateChanged, signInWithPopup, signOut, GoogleAuthProvider } from 'firebase/auth';
 import { doc, getDoc, setDoc, updateDoc, collection, onSnapshot, deleteDoc } from 'firebase/firestore';
-import { auth, db, googleProvider } from '../lib/firebase';
+import { auth, db, googleProvider, loginWithGoogle, logoutUser, getAccessToken } from '../lib/firebase';
 
 export interface UserTargetProfile {
   targetSat?: number;
@@ -25,7 +25,8 @@ export interface SavedCollegeItem {
 interface AuthContextType {
   user: User | null;
   loading: boolean;
-  signInWithGoogle: () => Promise<void>;
+  accessToken: string | null;
+  signInWithGoogle: () => Promise<string | null>;
   signOutUser: () => Promise<void>;
   savedColleges: SavedCollegeItem[];
   isCollegeSaved: (id: string) => boolean;
@@ -40,6 +41,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
+  const [accessToken, setAccessToken] = useState<string | null>(() => getAccessToken());
   const [loading, setLoading] = useState<boolean>(true);
   const [savedColleges, setSavedColleges] = useState<SavedCollegeItem[]>([]);
   const [milestones, setMilestones] = useState<string[]>([]);
@@ -77,7 +79,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
           console.warn('Error fetching user profile doc from Firestore:', err);
         }
       } else {
-        // User logged out: fallback to local storage
+        // User logged out: clear access token and fallback to local storage
+        setAccessToken(null);
         try {
           const localSaved = localStorage.getItem('globalpath_saved_colleges');
           if (localSaved) setSavedColleges(JSON.parse(localSaved));
@@ -117,7 +120,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const signInWithGoogle = async () => {
     try {
-      await signInWithPopup(auth, googleProvider);
+      const res = await loginWithGoogle();
+      if (res.accessToken) {
+        setAccessToken(res.accessToken);
+      }
+      return res.accessToken;
     } catch (error) {
       console.error('Google Sign-in failed:', error);
       throw error;
@@ -126,7 +133,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const signOutUser = async () => {
     try {
-      await signOut(auth);
+      await logoutUser();
+      setAccessToken(null);
       setSavedColleges([]);
       setMilestones([]);
       setProfile({});
@@ -221,6 +229,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       value={{
         user,
         loading,
+        accessToken,
         signInWithGoogle,
         signOutUser,
         savedColleges,

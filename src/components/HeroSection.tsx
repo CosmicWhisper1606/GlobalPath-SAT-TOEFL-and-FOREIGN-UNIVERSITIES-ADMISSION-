@@ -44,7 +44,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectTab }) => {
         <div className="max-w-5xl">
           {/* Metadata banner */}
           <div className="flex flex-wrap items-center gap-2 text-xs font-medium mb-3 text-amber-300">
-            <span className="font-semibold text-amber-400">By Pranav Jagtap</span>
+            <span className="font-semibold text-amber-400">By Pranav Subhash Jagtap</span>
             <span aria-hidden="true">·</span>
             <span>Official 2026–2027 Admissions Journey</span>
             <span aria-hidden="true">·</span>

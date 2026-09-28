@@ -61,6 +61,57 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onSelectTab }) => {
             Organized around how international students actually navigate admissions: from <strong>Standardized Testing</strong> and <strong>Curriculum Evaluation</strong> to <strong>University Matching</strong>, <strong>Application Deadlines</strong>, and <strong>Need-Blind Financial Aid</strong>.
           </p>
 
+          {/* AI Capabilities & Live Voice Showcase */}
+          <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <button
+              onClick={() => onSelectTab('ai-advisor')}
+              className="p-3.5 rounded-2xl bg-gradient-to-r from-amber-500/20 to-yellow-500/10 border border-amber-500/40 hover:border-amber-400 text-left transition-all hover:scale-[1.02] cursor-pointer group"
+            >
+              <div className="flex items-center justify-between mb-1.5">
+                <span className="text-xs font-bold text-amber-300 flex items-center gap-1.5">
+                  <Sparkles className="w-4 h-4 text-amber-400" />
+                  Gemini AI Advisor
+                </span>
+                <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-200">Pro & Flash</span>
+              </div>
+              <p className="text-xs text-stone-300">
+                Multi-turn counseling for Ivy League strategy, essay review, and rapid vocab drills.
+              </p>
+            </button>
+
+            <button
+              onClick={() => onSelectTab('live-voice')}
+              className="p-3.5 rounded-2xl bg-gradient-to-r from-cyan-500/20 to-blue-500/10 border border-cyan-500/40 hover:border-cyan-400 text-left transition-all hover:scale-[1.02] cursor-pointer group"
+            >
+              <div className="flex items-center justify-between mb-1.5">
+                <span className="text-xs font-bold text-cyan-300 flex items-center gap-1.5">
+                  <Zap className="w-4 h-4 text-cyan-400" />
+                  Gemini 3.8 Live Voice
+                </span>
+                <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-cyan-500/20 text-cyan-200">Real-Time</span>
+              </div>
+              <p className="text-xs text-stone-300">
+                Talk directly with your microphone for admissions & F-1 visa interview simulations.
+              </p>
+            </button>
+
+            <button
+              onClick={() => onSelectTab('grounded-search')}
+              className="p-3.5 rounded-2xl bg-gradient-to-r from-blue-500/20 to-indigo-500/10 border border-blue-500/40 hover:border-blue-400 text-left transition-all hover:scale-[1.02] cursor-pointer group"
+            >
+              <div className="flex items-center justify-between mb-1.5">
+                <span className="text-xs font-bold text-blue-300 flex items-center gap-1.5">
+                  <Globe2 className="w-4 h-4 text-blue-400" />
+                  Google Search Intel
+                </span>
+                <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-200">Live Web</span>
+              </div>
+              <p className="text-xs text-stone-300">
+                Get up-to-date testing dates, changing visa policies, and live tuition rates.
+              </p>
+            </button>
+          </div>
+
           {/* Core 4-Stage Admissions Journey Bar */}
           <div className="mt-7 p-4 rounded-2xl bg-stone-900/90 border border-stone-800 shadow-sm space-y-3">
             <div className="text-xs font-bold text-[var(--theme-accent)] uppercase tracking-wider flex items-center gap-1.5">

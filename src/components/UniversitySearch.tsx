@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react';
+import { useAuth } from '../context/AuthContext';
 import {
   UNIVERSITIES_DATABASE,
   STUDY_PROGRAMS_LIST,
@@ -46,6 +47,8 @@ export const UniversitySearch: React.FC<UniversitySearchProps> = ({
   onAddToTimeline,
   onGoToTimeline
 }) => {
+  const { toggleSaveCollege, isCollegeSaved } = useAuth();
+
   // Filter States
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCountry, setSelectedCountry] = useState('All Countries');
@@ -196,6 +199,16 @@ export const UniversitySearch: React.FC<UniversitySearchProps> = ({
         });
         localStorage.setItem('globalpath_custom_deadlines', JSON.stringify(timelineList));
       }
+
+      // Also sync to Firebase Firestore for authenticated user
+      toggleSaveCollege({
+        id: uni.id,
+        name: uni.name,
+        country: uni.country,
+        satRequirement: uni.satMiddle50,
+        toeflRequirement: `${uni.toeflMin}+`,
+        deadline: uni.regularDeadline
+      });
 
       setAddedIds((prev) => ({ ...prev, [uni.id]: true }));
       setTimeout(() => {

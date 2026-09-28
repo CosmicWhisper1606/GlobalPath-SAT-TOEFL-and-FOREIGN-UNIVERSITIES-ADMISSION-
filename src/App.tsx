@@ -18,14 +18,25 @@ import { AIVideoWalkthroughs } from './components/AIVideoWalkthroughs';
 import { GlobalExamEqualizer } from './components/GlobalExamEqualizer';
 import { StandardizedTestingHub } from './components/StandardizedTestingHub';
 import { CurriculumEngine } from './components/CurriculumEngine';
+import { GeminiChatbot } from './components/GeminiChatbot';
+import { GeminiLiveVoice } from './components/GeminiLiveVoice';
+import { SearchGroundingIntelligence } from './components/SearchGroundingIntelligence';
 import { Footer } from './components/Footer';
 import { ThemeProvider } from './utils/ThemeContext';
+import { AuthProvider } from './context/AuthContext';
 
 function AppContent() {
-  const [activeTab, setActiveTab] = useState<string>('search');
+  const [activeTab, setActiveTab] = useState<string>(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const tabParam = params.get('tab');
+      if (tabParam) return tabParam;
+    }
+    return 'search';
+  });
   const [savedCount, setSavedCount] = useState<number>(0);
 
-  // Read saved milestones on mount
+  // Read saved milestones on mount and listen to popstate for browser navigation
   useEffect(() => {
     try {
       const saved = localStorage.getItem('globalpath_milestones');
@@ -38,10 +49,23 @@ function AppContent() {
     } catch {
       // ignore
     }
+
+    const handlePopState = () => {
+      const params = new URLSearchParams(window.location.search);
+      const tabParam = params.get('tab');
+      setActiveTab(tabParam || 'search');
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
   const handleTabChange = (tab: string) => {
     setActiveTab(tab);
+    if (typeof window !== 'undefined') {
+      const newUrl = tab === 'search' ? window.location.pathname : `?tab=${encodeURIComponent(tab)}`;
+      window.history.pushState({ tab }, '', newUrl);
+    }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -66,6 +90,9 @@ function AppContent() {
 
           {/* Tabbed Guides & Interactive Suites */}
           <div className="pb-16 relative w-full max-w-full overflow-x-hidden">
+            {activeTab === 'ai-advisor' && <GeminiChatbot />}
+            {activeTab === 'live-voice' && <GeminiLiveVoice />}
+            {activeTab === 'grounded-search' && <SearchGroundingIntelligence />}
             {activeTab === 'search' && (
               <UniversitySearch
                 onGoToTimeline={() => handleTabChange('tracker')}
@@ -136,8 +163,10 @@ function AppContent() {
 
 export default function App() {
   return (
-    <ThemeProvider>
-      <AppContent />
-    </ThemeProvider>
+    <AuthProvider>
+      <ThemeProvider>
+        <AppContent />
+      </ThemeProvider>
+    </AuthProvider>
   );
 }

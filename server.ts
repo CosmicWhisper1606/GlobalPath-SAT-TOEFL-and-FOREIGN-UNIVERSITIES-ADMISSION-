@@ -1,5 +1,7 @@
 import express from 'express';
 import type { Request, Response } from 'express';
+import http from 'http';
+import { WebSocketServer } from 'ws';
 import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -553,6 +555,12 @@ Return a strict, valid JSON object with the following schema:
   });
 });
 
+// Google Search Console HTML File Verification endpoint
+app.get('/google8678f214d1514ab7.html', (req: Request, res: Response) => {
+  res.type('text/html');
+  res.send('google-site-verification: google8678f214d1514ab7.html');
+});
+
 // Robots.txt & Sitemap for Google Search Console and SEO Crawlers
 app.get('/robots.txt', (req: Request, res: Response) => {
   const host = req.get('host') || 'localhost';
@@ -564,17 +572,169 @@ app.get('/robots.txt', (req: Request, res: Response) => {
 app.get('/sitemap.xml', (req: Request, res: Response) => {
   const host = req.get('host') || 'localhost';
   const protocol = req.protocol || 'https';
-  const baseUrl = `${protocol}://${host}`;
+  const baseUrl = process.env.APP_URL ? process.env.APP_URL.replace(/\/$/, '') : `${protocol}://${host}`;
+  const currentDate = new Date().toISOString().split('T')[0];
+
+  const sections = [
+    { path: '', changefreq: 'daily', priority: '1.0' },
+    { path: '?tab=search', changefreq: 'daily', priority: '0.95' },
+    { path: '?tab=ai-advisor', changefreq: 'daily', priority: '0.95' },
+    { path: '?tab=live-voice', changefreq: 'weekly', priority: '0.90' },
+    { path: '?tab=grounded-search', changefreq: 'daily', priority: '0.90' },
+    { path: '?tab=sat', changefreq: 'weekly', priority: '0.90' },
+    { path: '?tab=toefl', changefreq: 'weekly', priority: '0.90' },
+    { path: '?tab=testing-hub', changefreq: 'weekly', priority: '0.90' },
+    { path: '?tab=upcoming-dates', changefreq: 'daily', priority: '0.90' },
+    { path: '?tab=scholarships', changefreq: 'weekly', priority: '0.90' },
+    { path: '?tab=curriculum', changefreq: 'monthly', priority: '0.85' },
+    { path: '?tab=equalizer', changefreq: 'weekly', priority: '0.85' },
+    { path: '?tab=countries', changefreq: 'monthly', priority: '0.85' },
+    { path: '?tab=global-students', changefreq: 'weekly', priority: '0.85' },
+    { path: '?tab=mock-tests', changefreq: 'weekly', priority: '0.85' },
+    { path: '?tab=calculator', changefreq: 'monthly', priority: '0.80' },
+    { path: '?tab=blueprint', changefreq: 'monthly', priority: '0.80' },
+    { path: '?tab=video-guides', changefreq: 'weekly', priority: '0.80' },
+    { path: '?tab=tracker', changefreq: 'monthly', priority: '0.75' },
+    { path: '?tab=resources', changefreq: 'monthly', priority: '0.75' },
+    { path: '?tab=compare', changefreq: 'monthly', priority: '0.75' }
+  ];
+
+  const xmlEntries = sections.map(sec => `  <url>
+    <loc>${baseUrl}/${sec.path}</loc>
+    <lastmod>${currentDate}</lastmod>
+    <changefreq>${sec.changefreq}</changefreq>
+    <priority>${sec.priority}</priority>
+  </url>`).join('\n');
+
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>${baseUrl}/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+${xmlEntries}
 </urlset>`;
+
   res.type('application/xml');
   res.send(xml);
+});
+
+// Endpoint: Multi-Turn Gemini Chatbot
+// Uses gemini-3.1-pro-preview for complex tasks (Ivy & T20 strategy)
+// Uses gemini-3.5-flash with googleSearch tool for general admissions & up-to-date queries
+// Uses gemini-3.1-flash-lite for rapid flash drills & quick explanations
+app.post('/api/gemini/chat', async (req: Request, res: Response) => {
+  const { messages, role = 'general-advisor', searchGrounded = true } = req.body;
+  if (!Array.isArray(messages) || messages.length === 0) {
+    return res.status(400).json({ error: 'messages array required' });
+  }
+
+  let modelName = 'gemini-3.5-flash';
+  let systemInstruction = '';
+  let tools: any[] | undefined = undefined;
+
+  if (role === 'ivy-strategist') {
+    modelName = 'gemini-3.1-pro-preview';
+    systemInstruction = `You are GlobalPath's Ivy League & Top 20 Global Admissions Strategist. You specialize in complex holistic profile evaluation, extracurricular spike development, Common App essay critique, and high-stakes scholarship odds for international students aiming for Harvard, MIT, Stanford, Oxford, Cambridge, and top global institutions. Provide deep, rigorous, strategic feedback.`;
+  } else if (role === 'flash-drill') {
+    modelName = 'gemini-3.1-flash-lite';
+    systemInstruction = `You are the GlobalPath Flash Coach. Your job is ultra-fast, direct explanations, rapid-fire vocabulary quizzes, instant SAT math formula checks, and quick conversion drills. Keep responses crisp, punchy, and actionable.`;
+  } else {
+    // general-advisor
+    modelName = 'gemini-3.5-flash';
+    systemInstruction = `You are GlobalPath's Senior Admissions & Test Advisor. You provide authoritative, accurate guidance on Digital SAT, TOEFL iBT, international curriculum equivalence (CBSE, IB, A-Levels), application timelines, and student visa processes. Use live Google Search data to ensure all test dates, deadlines, and tuition figures are current.`;
+    if (searchGrounded) {
+      tools = [{ googleSearch: {} }];
+    }
+  }
+
+  if (!aiClient) {
+    const lastUserQuery = messages[messages.length - 1]?.content || 'General Query';
+    return res.json({
+      reply: `[GlobalPath AI Advisor]: Here is guidance for your inquiry: "${lastUserQuery.slice(0, 70)}...". For foreign university admissions, ensure your SAT/TOEFL scores match the 75th percentile of admitted students, demonstrate academic rigor (AP/IB/CBSE >90%), and meet the upcoming Deadlines (Early Decision in Nov, Regular in Jan).`,
+      modelUsed: modelName,
+      sources: []
+    });
+  }
+
+  try {
+    const formattedContents = messages.map((m: any) => ({
+      role: m.role === 'assistant' || m.role === 'model' ? 'model' : 'user',
+      parts: [{ text: m.content }]
+    }));
+
+    const response = await aiClient.models.generateContent({
+      model: modelName,
+      contents: formattedContents,
+      config: {
+        systemInstruction,
+        tools
+      }
+    });
+
+    const replyText = response.text || 'I analyzed your inquiry, but could not produce a response.';
+    
+    // Extract search grounding metadata
+    let sources: any[] = [];
+    const candidate = response.candidates?.[0];
+    const groundingMetadata = candidate?.groundingMetadata;
+    if (groundingMetadata?.groundingChunks) {
+      sources = groundingMetadata.groundingChunks
+        .map((chunk: any) => chunk.web ? { title: chunk.web.title, uri: chunk.web.uri } : null)
+        .filter(Boolean);
+    }
+
+    return res.json({
+      reply: replyText,
+      modelUsed: modelName,
+      sources,
+      searchQueries: groundingMetadata?.webSearchQueries || []
+    });
+  } catch (error: any) {
+    console.error('Chatbot error:', error);
+    return res.json({
+      reply: `I encountered an issue generating a live response (${error.message || 'Service overload'}). For ${role === 'ivy-strategist' ? 'complex admissions planning' : 'test preparation'}, always ensure you review official guidelines from College Board, ETS, and respective university portals.`,
+      modelUsed: modelName,
+      sources: []
+    });
+  }
+});
+
+// Endpoint: Dedicated Search Grounding with Google Search Data (gemini-3.5-flash)
+app.post('/api/gemini/search-grounded', async (req: Request, res: Response) => {
+  const { query } = req.body;
+  if (!query) return res.status(400).json({ error: 'query required' });
+
+  if (!aiClient) {
+    return res.json({
+      answer: `Search Grounding query processed: "${query}". Please configure GEMINI_API_KEY for live Google Search web results.`,
+      sources: []
+    });
+  }
+
+  try {
+    const response = await aiClient.models.generateContent({
+      model: 'gemini-3.5-flash',
+      contents: `Search Google for the latest and most accurate, up-to-date data to answer this international student admissions query: "${query}". Provide a comprehensive breakdown with specific dates, policy requirements, deadlines, and actionable steps.`,
+      config: {
+        tools: [{ googleSearch: {} }]
+      }
+    });
+
+    const candidate = response.candidates?.[0];
+    const groundingMetadata = candidate?.groundingMetadata;
+    const sources = (groundingMetadata?.groundingChunks || [])
+      .map((c: any) => c.web ? { title: c.web.title, uri: c.web.uri } : null)
+      .filter(Boolean);
+
+    return res.json({
+      answer: response.text,
+      sources,
+      searchQueries: groundingMetadata?.webSearchQueries || []
+    });
+  } catch (err: any) {
+    console.error('Search grounding error:', err);
+    return res.status(500).json({ error: err.message || 'Failed to fetch search-grounded answer' });
+  }
 });
 
 // Vite Middleware integration for development
@@ -592,6 +752,76 @@ if (process.env.NODE_ENV === 'production') {
   app.use(vite.middlewares);
 }
 
-app.listen(PORT, '0.0.0.0', () => {
+const server = http.createServer(app);
+
+// WebSocket Server for Gemini 3.8 Live API real-time voice streaming
+const wss = new WebSocketServer({ server, path: '/api/live-stream' });
+
+wss.on('connection', async (clientWs) => {
+  console.log('Client connected to Live Voice WebSocket');
+
+  if (!aiClient) {
+    clientWs.send(JSON.stringify({ error: 'Gemini client not initialized' }));
+    return;
+  }
+
+  try {
+    const liveSession = await aiClient.live.connect({
+      model: 'gemini-3.8-live',
+      config: {
+        responseModalities: ['AUDIO' as any],
+        systemInstruction: 'You are GlobalPath Live Voice Counselor: a supportive, knowledgeable international college admissions and standardized test expert. Answer questions directly, encourage students, and provide tactical SAT/TOEFL and university guidance in natural, spoken English.',
+      },
+      callbacks: {
+        onmessage: (message: any) => {
+          const audio = message.serverContent?.modelTurn?.parts?.[0]?.inlineData?.data;
+          const text = message.serverContent?.modelTurn?.parts?.[0]?.text;
+          if (audio) {
+            clientWs.send(JSON.stringify({ audio, text }));
+          }
+          if (message.serverContent?.interrupted) {
+            clientWs.send(JSON.stringify({ interrupted: true }));
+          }
+        },
+        onclose: () => {
+          clientWs.send(JSON.stringify({ status: 'closed' }));
+        },
+        onerror: (err: any) => {
+          clientWs.send(JSON.stringify({ error: err?.message || 'Live session error' }));
+        }
+      }
+    });
+
+    clientWs.on('message', (data: any) => {
+      try {
+        const payload = JSON.parse(data.toString());
+        if (payload.audio) {
+          liveSession.sendRealtimeInput({
+            audio: { data: payload.audio, mimeType: 'audio/pcm;rate=16000' }
+          });
+        } else if (payload.text) {
+          liveSession.sendRealtimeInput({
+            text: payload.text
+          });
+        }
+      } catch (err) {
+        console.warn('Failed to parse client message:', err);
+      }
+    });
+
+    clientWs.on('close', () => {
+      try {
+        liveSession.close();
+      } catch {
+        // ignore
+      }
+    });
+  } catch (err: any) {
+    console.error('Failed to create live session:', err);
+    clientWs.send(JSON.stringify({ error: err?.message || 'Could not start live session' }));
+  }
+});
+
+server.listen(PORT, '0.0.0.0', () => {
   console.log(`GlobalPath Server running on http://0.0.0.0:${PORT}`);
 });

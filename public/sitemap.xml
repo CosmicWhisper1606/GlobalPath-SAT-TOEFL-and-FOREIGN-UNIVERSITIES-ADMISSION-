@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <!-- Homepage & University Search -->
+  <url>
+    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <!-- University Matcher & Admissions Catalog -->
+  <url>
+    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/?tab=search</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <!-- Gemini Multi-Turn Admissions Advisor (Pro/Flash) -->
+  <url>
+    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/?tab=ai-advisor</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <!-- Gemini 3.8 Live Voice Counselor -->
+  <url>
+    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/?tab=live-voice</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <!-- Google Search Grounded Admissions Intelligence -->
+  <url>
+    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/?tab=grounded-search</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <!-- Digital SAT Comprehensive Preparation Guide -->
+  <url>
+    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/?tab=sat</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <!-- Official TOEFL iBT Prep & Speaking Rubrics -->
+  <url>
+    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/?tab=toefl</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <!-- Standardized Testing Comparison Hub & Center Status -->
+  <url>
+    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/?tab=testing-hub</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <!-- SAT & TOEFL Upcoming Registration Dates & Deadlines -->
+  <url>
+    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/?tab=upcoming-dates</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <!-- Global Scholarships & Need-Blind Financial Aid Finder -->
+  <url>
+    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/?tab=scholarships</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <!-- Curriculum Engine (CBSE, IB, A-Levels, AP Normalization) -->
+  <url>
+    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/?tab=curriculum</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <!-- Global Exam Equalizer & Grading Obstacle Normalizer -->
+  <url>
+    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/?tab=equalizer</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <!-- Country-by-Country Study Abroad Guides -->
+  <url>
+    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/?tab=countries</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <!-- Visas, Embassy Checklists & Proof of Funds -->
+  <url>
+    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/?tab=global-students</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <!-- AI Mock Exam Testing Hub -->
+  <url>
+    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/?tab=mock-tests</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <!-- Score Converter & International GPA Calculator -->
+  <url>
+    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/?tab=calculator</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <!-- Holistic Admissions Strategy Blueprint -->
+  <url>
+    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/?tab=blueprint</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <!-- Application Form Walkthrough Video Tutorials -->
+  <url>
+    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/?tab=video-guides</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <!-- Application Milestone Timeline Tracker -->
+  <url>
+    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/?tab=tracker</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <!-- Official Admissions Handbooks & PDF Resources -->
+  <url>
+    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/?tab=resources</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <!-- Testing Policies & University Comparison Matrix -->
+  <url>
+    <loc>https://ais-dev-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app/?tab=compare</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+</urlset>

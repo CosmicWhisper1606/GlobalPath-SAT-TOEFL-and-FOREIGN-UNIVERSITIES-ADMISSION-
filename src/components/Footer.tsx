@@ -151,13 +151,13 @@ export const Footer: React.FC<FooterProps> = ({ onSelectTab }) => {
         </div>
 
         <div className="border-t border-[var(--theme-hero-border)] pt-6 flex flex-col sm:flex-row items-center justify-between text-stone-500 gap-4">
-          <div>
-            © {new Date().getFullYear()} GlobalPath. Built for international university aspirants.
+          <div className="text-stone-400">
+            © {new Date().getFullYear()} <span className="text-stone-200 font-semibold">GlobalPath</span> · Created & Architected by <span className="text-amber-400 font-semibold">Pranav Jagtap</span>
           </div>
           <div className="flex items-center gap-4 text-stone-400">
-            <span>Free Academic Reference</span>
+            <span>Free Global Admissions Guide</span>
             <span>·</span>
-            <span>Zero Commercial Sponsoring</span>
+            <span>Built by Pranav Jagtap</span>
           </div>
         </div>
       </div>

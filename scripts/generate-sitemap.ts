@@ -7,7 +7,7 @@ const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 
 // Default target URL or environment override
-const baseUrl = (process.env.APP_URL || 'https://ais-pre-eg72ihbdmodi5fv4okm2fi-913908464203.asia-southeast1.run.app').replace(/\/$/, '');
+const baseUrl = (process.env.APP_URL || 'https://globalpath-sat-toefl-foreign-university-admission.ai.studio').replace(/\/$/, '');
 const currentDate = new Date().toISOString().split('T')[0];
 
 interface SitemapRoute {
